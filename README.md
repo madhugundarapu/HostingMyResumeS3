@@ -1,21 +1,21 @@
 
 # AWS CloudFront + S3 Static Website Hosting Project
 
-This project demonstrates how to **host a static website on AWS S3** and **deliver it globally using AWS CloudFront CDN** for better performance and availability.  
-The demo uses a sample file named **`MadhuGResume.html`** hosted in an **S3 bucket** called **`madhugresumedemo`** in the **us-east-1 (N.verginia)** region.
+This project demonstrates how I hosted my **personal resume HTML file** on **AWS S3** and distributed it globally using **AWS CloudFront CDN** for faster delivery and high availability.  
+The demo file used is **`MadhuGResume.html`** hosted inside an **S3 bucket** named **`madhugresumedemo`** in the **us-east-1 (N.verginia)** region.
 
 
 ## Project Overview
 
-The goal of this project is to:
-- Upload and host a static HTML file (`MadhuGResume.html`) on S3.
+The main goal of this project is to:
+- Host a static website (my resume) on **Amazon S3**
 - Configure the bucket for **static website hosting**.
 - Create a **CloudFront distribution** to deliver content securely and faster.
-- Access the website through the CloudFront domain name.
+- Access the hosted file securely through the **CloudFront domain**.
 
 
 ### Components:
-- **Amazon S3** – Stores the static website files.
+- **Amazon S3** – To Store and host the static website files.
 - **Amazon CloudFront** – Acts as CDN to distribute content globally.
 - **User Browser** – Accesses the CloudFront URL to load the resume page.
 - **(Optional) Route 53** – For custom domain routing.
@@ -25,15 +25,15 @@ The goal of this project is to:
 
 ### 1. Create S3 Bucket
 1. Go to AWS Console → S3.
-2. Create a new bucket: `madhugresumedemo`.
-3. Choose **Region**: `us-east-1 (N.verginia)`.
-4. Uncheck “Block all public access”.
-5. Enable **Static Website Hosting** under “Properties”.
-6. Upload your file: `MadhuGResume.html`.
+2. Created a new bucket: `madhugresumedemo`.
+3. Selected **Region**: `us-east-1 (N.verginia)`.
+4. Unchecked “Block all public access”.
+5. Enabled **Static Website Hosting** under “Properties”.
+6. Uploaded my file: `MadhuGResume.html`.
 
 
 ### 2. Set Bucket Policy
-Allow public read access for website content:
+To allow public read access for my hosted website content:
 
 ```json
 {
@@ -48,40 +48,36 @@ Allow public read access for website content:
     }
   ]
 }
-````
 
----
+### 3. Test S3 Website Hosting
 
-### 3. Test S3 Website
+* Opened **Static Website URL** from S3 properties.
 
-* Open **Static Website URL** from S3 properties.
-* Example:
   `http://madhugresumedemo.s3-website-us-east-1.amazonaws.com`
-
+I saw my resume page displayed successfully.
 ---
 
 ### 4. Create CloudFront Distribution
 
 1. Go to **CloudFront Console → Create Distribution**.
-2. Choose **Origin Domain**: your S3 static website endpoint.
+2. Chooses **Origin Domain**: my S3 static website endpoint.
 3. Set:
 
    * Viewer Protocol Policy: **Redirect HTTP to HTTPS**
    * Allowed HTTP Methods: **GET, HEAD**
 4. Click **Create Distribution**.
-5. Wait until status shows **Deployed**.
+5. Wait until the status shows **Deployed**.
 
 
 ### 5. Test CloudFront Distribution
 
-* Open the **CloudFront domain name**, e.g.
+Once deployed * Open the **CloudFront domain name**,
   `https://dxxxxx.cloudfront.net/MadhuGResume.html`
 
-* Your website should now load from the CDN edge location!
+* My resume file will now load globally through the CloudFront CDN - faster and more secure!
 
----
 
-## 🧩 Common Issues
+## Common Issues
 
 | Error               | Reason                       | Fix                                                              |
 | ------------------- | ---------------------------- | ---------------------------------------------------------------- |
@@ -91,7 +87,7 @@ Allow public read access for website content:
 
 ---
 
-## 📁 Project Files
+## Project Files
 
 | File                                                     | Description              |
 | -------------------------------------------------------- | ------------------------ |
@@ -112,4 +108,3 @@ Allow public read access for website content:
 **Author:** Madhu Gundarapu
 **Region:** `us-east-1 (N.verginia)`
 **Project:** AWS S3 + CloudFront Resume Hosting
-
