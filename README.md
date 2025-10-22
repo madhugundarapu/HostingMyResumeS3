@@ -1,4 +1,3 @@
-
 # AWS CloudFront + S3 Static Website Hosting Project
 
 This project demonstrates how I hosted my **personal resume HTML file** on **AWS S3** and distributed it globally using **AWS CloudFront CDN** for faster delivery and high availability.  
