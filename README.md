@@ -47,4 +47,61 @@ To allow public read access for my hosted website content:
     }
   ]
 }
+```
 
+### 3. Test S3 Website Hosting
+
+* Opened **Static Website URL** from S3 properties.
+
+  `http://madhugresumedemo.s3-website-us-east-1.amazonaws.com`
+I saw my resume page displayed successfully.
+
+### 4. Create CloudFront Distribution
+
+1. Go to **CloudFront Console → Create Distribution**.
+2. Chooses **Origin Domain**: my S3 static website endpoint.
+3. Set:
+
+   * Viewer Protocol Policy: **Redirect HTTP to HTTPS**
+   * Allowed HTTP Methods: **GET, HEAD**
+4. Click **Create Distribution**.
+5. Wait until the status shows **Deployed**.
+
+
+### 5. Test CloudFront Distribution
+
+Once deployed * Open the **CloudFront domain name**,
+  `https://dxxxxx.cloudfront.net/MadhuGResume.html`
+
+* My resume file will now load globally through the CloudFront CDN - faster and more secure!
+
+
+## Common Issues
+
+| Error               | Reason                       | Fix                                                              |
+| ------------------- | ---------------------------- | ---------------------------------------------------------------- |
+| 504 Gateway Timeout | CloudFront couldn’t reach S3 | Ensure S3 endpoint is **static website endpoint** not bucket URL |
+| AccessDenied        | Missing bucket policy        | Add public read permission in bucket policy                      |
+| File Not Found      | Wrong path or filename       | Check `MadhuGResume.html` case sensitivity                       |
+
+
+## Project Files
+
+| File                                                     | Description              |
+| -------------------------------------------------------- | ------------------------ |
+| `MadhuGResume.html`                                      | Static HTML Resume Page  |
+| `A_digital_diagram_in_the_image_illustrates_the_arc.png` | Architecture Diagram     |
+| `README.md`                                              | Documentation for GitHub |
+
+
+## 🧠 Learning Outcomes
+
+* Hosting static websites using AWS S3.
+* Setting up CloudFront CDN.
+* Understanding static vs dynamic content hosting.
+* Diagnosing CloudFront-S3 connectivity errors.
+
+
+**Author:** Madhu Gundarapu
+**Region:** `us-east-1 (N.verginia)`
+**Project:** AWS S3 + CloudFront Resume Hosting
